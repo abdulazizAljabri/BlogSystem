@@ -2,6 +2,7 @@ package com.example.bolgsystem.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class User implements UserDetails {
     private String username;
     @NotEmpty(message = "Should be not empty")
     @Column(columnDefinition = "varchar(255) not null")
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$")
     private String password;
     @NotEmpty(message = "Should be not empty")
     @Column(columnDefinition = "varchar(10) not null ")
